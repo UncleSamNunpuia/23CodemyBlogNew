@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+{% block cssStyle%}
+<!-- it gos to App/static/'appname/css/fileName' -->
+<link rel="stylesheet" href="{% static 'theBlogNew/css/home.css' %}" />
+{% endblock cssStyle%}
+<!--  -->
+{% block app %}
+<div class="container">
+  {{ page_title }}
+  <br />
+  <ul>
+    {% for postQuerySet in object_list %}
+    <!--  -->
+    <li class="ms-1">
+      <!--  -->
+      <div class="tichhin">
+        <a href="{% url 'blog_article' postQuerySet.pk %}">
+          <div class="card-body cardPreview">
+            {% if postQuerySet.image %}
+            <img
+              src="{{ postQuerySet.image.url }}"
+              class="card-img-top imag"
+              alt="..."
+            />
+            {% endif %}
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <h5 class="card-title">
+              <!-- <a href="{% url 'blog_article' postQuerySet.pk %}"> -->
+              {{ postQuerySet.post_title }}
+              <!-- </a> -->
+            </h5>
+            <h6>
+              Written By: {{ postQuerySet.author.first_name }} aka
+              <!--  -->
+              {{postQuerySet.author.username }}
+            </h6>
+            <p>{{postQuerySet.updated_at}}</p>
+            <small>
+              <!-- <a href="{% url 'blog_updatePost' postQuerySet.pk %}"> -->
+              Edit
+              <!-- </a> -->
+            </small>
+            <p class="card-text">{{ postQuerySet.post_content | safe }}</p>
+          </div>
+        </a>
+      </div>
+      <br />
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+<!--  -->
+
+{% endblock app %}

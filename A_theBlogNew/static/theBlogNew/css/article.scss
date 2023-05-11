@@ -1,0 +1,20 @@
+body {
+    background-color: #bdb76b;
+    font-size: 16px;
+}
+
+.articleContent {
+    border-style: dashed;
+    // width: 844px;
+    max-width: 60%;
+    margin: auto;
+    font-size: 1.25rem;
+}
+
+.imag {
+    max-width: 60%px;
+    height: 350px;
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+}

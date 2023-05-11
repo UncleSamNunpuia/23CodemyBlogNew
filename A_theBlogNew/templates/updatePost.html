@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+{% block cssStyle%}
+<link rel="stylesheet" href="{% static 'theBlogNew/css/article.css' %}" />
+{% endblock cssStyle%}
+<!--  -->
+{% block app %}
+<!--  -->
+this is update post page
+<form action="" method="post" enctype="multipart/form-data">
+  <!--  -->
+  {% csrf_token %} {{ form.media }} {{ form.as_p }}
+  <!--  -->
+  <button type="submit" class="btn btn-secondary">Update!</button>
+</form>
+<!--  -->
+<br />
+<a href="{% url 'blog_homePage' %}">BackToBlog</a>
+{% endblock app %}

@@ -1,0 +1,471 @@
+{% extends 'base.html'%}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+<!--  -->
+{% block cssStyle%}
+<link rel="stylesheet" href="{% static 'B_01BaseApp/css/inkhawmHome.css'%}" />
+{% endblock cssStyle%}
+<!--  -->
+<!--  -->
+{% block app%} This is rendered from inkhawm home.html
+<!-- belwo is inchhiarna table input -->
+<div
+  class="container shadow-lg border border-4 border-warning rounded-end bg-warning-subtle"
+>
+  <br />
+
+  <form method="POST" action="{% url 'inkhawm:inkhawmHome' %}">
+    {% csrf_token %}
+
+    <!-- error message1 -->
+    {% if messages %}
+    <!--  -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>
+        {% if error %} Not Submitted {% else %} Submitted {% endif %}
+      </strong>
+      <!-- <strong>Not Submitted/or not</strong> -->
+      {% for message in messages%} message is: {{ message }} {% endfor %}
+      <!--  -->
+      {% if error %}
+      <div class="container">error is: {{error}}</div>
+      <!--  -->
+      {% for er_key, er_msg in error.items %}
+      <hr />
+      error key: {{er_key}}
+      <br />
+      error message: {{er_msg}}
+      <hr />
+      {% endfor %} {% endif %}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endif %}
+    <!-- ends error message1 -->
+
+    <!-- header -->
+    <div class="row g-3 justify-content-center">
+      <p class="h1 text-center bg-warning">Inkhawm zat chhinchhiahna</p>
+    </div>
+    <!-- header ends -->
+
+    <!--date  -->
+    <div class="row g-3 justify-content-center">
+      {{error.inkhawm_ni}}
+      <div class="col-3 form-floating mb-1">
+        <input
+          type="date"
+          min="1969-01-06"
+          max="9999-12-31"
+          step="7"
+          class="form-control matColor {% if error %}{% if error.inkhawm_ni %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          id="inkhawmDate"
+          name="inkhawm_ni"
+          value="{{ip_date_entered}}"
+          required
+        />
+        <label for="inkhawmDate">Inkhawm Date</label>
+        {% if error.inkhawm_ni %}
+        <div class="invalid-feedback">
+          Date input is haveing error. Enter another
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+    </div>
+    <br />
+    <!-- date ends -->
+
+    <!-- matthaia starts -->
+    <div class="row g-2 bg-warning-subtle" style="row-gap: 1">
+      <!-- placeholder dah loh chuan label hi a chaungah fixed nghal dah chuan null pawh nise duh angin a tha
+      -->
+      <!-- mat grp cmt -->
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control {% if error %}{% if error.mat_grp_cmt %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="1"
+          max="25"
+          step="1"
+          id="matgrp"
+          oninput="calculateSumMt()"
+          name="mat_grp_cmt"
+          value="{{ip_matGrpcmt}}"
+          placeholder=" "
+        />
+        <label for="matgrp">Mat. Grp. Cmt. zat</label>
+        {% if error.mat_grp_cmt %}
+        <div class="invalid-feedback">
+          Mat. Grp. Cmt. is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <!-- mat member -->
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control {% if error %}{% if error.mat_members %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="300"
+          step="1"
+          id="matmem"
+          oninput="calculateSumMt()"
+          name="mat_members"
+          value="{{ip_matMem}}"
+          placeholder=" "
+        />
+        <label for="matmem">Mat. Grp. Member zat</label>
+        {% if error.mat_members %}
+        <div class="invalid-feedback">
+          Mat. Grp. Members is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control {% if error.mt_nme_total %}error {% else %}noerror {% endif %}"
+          min="0"
+          max="300"
+          step="1"
+          id="mattotal"
+          placeholder="0to23"
+          name="mt_nme_total"
+          value="{{ip_mat_total}}"
+          aria-placeholder=" "
+          readonly
+        />
+        <label for="mattotal">Mat grp. belhkhawm</label>
+      </div>
+    </div>
+    <!-- marka starts here -->
+    <div class="row g-2 bg-warning-subtle">
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control markaColor {% if error %}{% if error.marka_grp_cmt %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="1"
+          max="25"
+          step="1"
+          id="margrp"
+          oninput="calculateSumMk()"
+          name="marka_grp_cmt"
+          value="{{ip_marGrpcmt}}"
+          placeholder=" "
+        />
+        <label for="margrp">Marka Grp. Cmt. zat</label>
+        {% if error.marka_grp_cmt %}
+        <div class="invalid-feedback">
+          Marka. Grp. Cmt. is having error. Enter again.
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control markaColor {% if error %}{% if error.marka_members %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="300"
+          step="1"
+          id="marmem"
+          oninput="calculateSumMk()"
+          name="marka_members"
+          value="{{ip_marMem}}"
+          placeholder=" "
+        />
+        <label for="marmem">Mar. Grp. Member zat</label>
+        {% if error.marka_grp_cmt %}
+        <div class="invalid-feedback">
+          Marka. Grp. Members is having error. Enter again.
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control markaColor {% if error.mk_nme_total %}error {% else %}noerror {% endif %}"
+          min="0"
+          max="300"
+          step="1"
+          id="martotal"
+          placeholder="0to23"
+          name="mk_nme_total"
+          value="{{ip_mk_total}}"
+          aria-placeholder=" "
+          readonly
+        />
+        <label for="martotal">Marka Grp. Belhkhawm</label>
+      </div>
+    </div>
+    <!-- Luka starts here -->
+    <div class="row g-2 bg-warning-subtle">
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control LukaColor {% if error %}{% if error.luka_grp_cmt %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="1"
+          max="25"
+          step="1"
+          id="lukagrp"
+          oninput="calculateSumLk()"
+          name="luka_grp_cmt"
+          value="{{ip_lukaGrpcmt}}"
+          placeholder=" "
+        />
+        <label for="lukagrp">Luka Grp. Cmt. zat</label>
+        {% if error.luka_grp_cmt %}
+        <div class="invalid-feedback">
+          Luka Grp. Cmt. is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control LukaColor {% if error %}{% if error.luka_members %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="300"
+          step="1"
+          id="lukamem"
+          oninput="calculateSumLk()"
+          name="luka_members"
+          value="{{ip_lukaMem}}"
+          placeholder=" "
+        />
+        <label for="lukamem">Luka Grp. Member zat</label>
+        {% if error.luka_members %}
+        <div class="invalid-feedback">
+          Luka Grp. Members is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control LukaColor {% if error.lk_nme_total %}error {% else %}noerror {% endif %}"
+          min="0"
+          max="300"
+          step="1"
+          id="lukatotal"
+          placeholder="0to23"
+          name="lk_nme_total"
+          value="{{ip_lk_total}}"
+          readonly
+        />
+        <label for="lukatotal">Luka Grp. Belhkhawm</label>
+      </div>
+    </div>
+    <!-- Johana starts here -->
+    <div class="row g-2 bg-warning-subtle">
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control JohanaColor {% if error %}{% if error.johan_grp_cmt %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="1"
+          max="25"
+          step="1"
+          id="johanagrp"
+          oninput="calculateSumJh()"
+          name="johan_grp_cmt"
+          value="{{ip_johanaGrpcmt}}"
+          placeholder=" "
+        />
+        <label for="johanagrp">Johana Grp. Cmt. zat</label>
+        {% if error.johan_grp_cmt %}
+        <div class="invalid-feedback">
+          Johana Grp. Cmt. is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control JohanaColor {% if error %}{% if error.johan_members %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="300"
+          step="1"
+          id="johanamem"
+          oninput="calculateSumJh()"
+          name="johan_members"
+          value="{{ip_johanaMem}}"
+          placeholder=" "
+        />
+        <label for="johanamem">Johana Grp. Member zat</label>
+        {% if error.johan_members %}
+        <div class="invalid-feedback">
+          Johana Grp. Members is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control JohanaColor {% if error.jh_nme_total %}error {% else %}noerror {% endif %}"
+          min="0"
+          max="300"
+          step="1"
+          id="johanatotal"
+          placeholder="0to23"
+          name="jh_nme_total"
+          value="{{ip_jh_total}}"
+          readonly
+        />
+        <label for="johanatotal">Johana Grp. Belhkhawm</label>
+      </div>
+    </div>
+    <!-- Leader leh Secy. -->
+    <div class="row g-3 bg-warning-subtle">
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control bg-warning {% if error %}{% if error.leader_secy %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="2"
+          step="1"
+          id="leadrSecy"
+          oninput="sum()"
+          placeholder=" "
+          name="leader_secy"
+          value="{{ip_leader_secy}}"
+        />
+        <label for="leadrSecy">Leader leh Secy</label>
+        {% if error.leader_secy %}
+        <div class="invalid-feedback">
+          Leader & Secy. is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Leader leh Secy. Ends -->
+    <!-- chhimutte -->
+    <!-- chhimtu1 -->
+    <!-- Toggle button -->
+    <div class="form-check form-switch toggle1 ps-5">
+      <input class="form-check-input mt-4" type="checkbox" id="toggle-input" />
+      <label class="form-check-label container-sm" for="toggle-input"
+        >Enable Chhimtu1</label
+      >
+    </div>
+    <div class="row g-3 bg-warning-subtle">
+      <div class="form-floating mb-3 col">
+        <!-- Input field -->
+        <!-- <div class="mb-3"> -->
+        <input
+          type="text"
+          class="form-control form-control bg-warning {% if error %}{% if error.chhimtu1 %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          id="chhimtu1_id"
+          name="chhimtu1"
+          placeholder=" "
+          value="{{ip_chhimtu1}}"
+          disabled
+        />
+        <label for="chhimtu1_id">Chhimtu1 name</label>
+        {% if error.chhimtu1 %}
+        <div class="invalid-feedback">
+          Chhimtu1 name is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3 col">
+        <input
+          type="number"
+          class="form-control bg-warning {% if error %}{% if error.chhimtu1_no %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          min="0"
+          max="50"
+          step="1"
+          id="chhimtu1_no_id"
+          oninput="sumChhimtu()"
+          placeholder=" "
+          name="chhimtu1_no"
+          value="{{ip_chhimtu1_no}}"
+        />
+        <label for="chhimtu1_no_id">Chhimtu1 zat</label>
+        {% if error.chhimtu1 %}
+        <div class="invalid-feedback">
+          Chhimtu1 zat is having error. Enter again
+        </div>
+        {% else %}
+        <div class="valid-feedback">Looks good!</div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- chhimtu1 ends -->
+
+    <!-- chhimtu add -->
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="addchhimtu"
+        onclick="addChhimtu('1')"
+      >
+        Add Chhimtu
+      </button>
+      <button type="button" class="btn btn-danger">Subtract chhimtu</button>
+    </div>
+    <!-- chhimtu add ends  -->
+    <!-- chhimutte ends -->
+    <!-- Grand Total -->
+    <div class="form-floating mb-3 col">
+      <input
+        type="number"
+        class="form-control bg-success-subtle"
+        min="0"
+        max="1200"
+        step="1"
+        id="gtotal"
+        placeholder="grand Total"
+        name="total"
+        value="{{ip_g_total}}"
+        readonly
+      />
+      <label for="floatingInput" class="text-dark">Inkhawm Zawng Zawng</label>
+    </div>
+    <!-- Gtotal ends -->
+    <!-- buttons -->
+    <hr class="hr-md" />
+    <div class="btn-group mt-0 mb-2" role="group" aria-label="Basic example">
+      <button type="reset" class="btn btn-primary">Reset</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <br />
+</div>
+<!-- form end -->
+
+{% endblock app%}
+<!--  -->
+<!--  -->
+{% block additionalJs%}
+<script src="{% static 'B_01BaseApp/js/inkhawmHome.js'%}"></script>
+{% endblock additionalJs%}
+<!--  -->

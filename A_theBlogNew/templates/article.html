@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+{% block cssStyle%}
+<link rel="stylesheet" href="{% static 'theBlogNew/css/article.css' %}" />
+{% endblock cssStyle%}
+<!--  -->
+{% block app%}
+<!--  -->
+<div class="articleContent">
+  <h1>
+    {{ post.post_title}} |
+    <a href="{% url 'blog_updatePost' post.pk %}"> Edit! </a>
+  </h1>
+  <small>Created on: {{ post.created_at}} </small>
+  <small>Updated on: {{ post.updated_at}} </small>
+
+  {% if post.image %}
+  <img src="{{ post.image.url }}" class="card-img-top imag" alt="..." />
+  {% endif %} {{ post.post_content | safe}}
+  <!-- HTML !-->
+  <br />
+  <a href="{% url 'blog_homePage' %}">BackToBlog</a>
+</div>
+{% endblock app%}

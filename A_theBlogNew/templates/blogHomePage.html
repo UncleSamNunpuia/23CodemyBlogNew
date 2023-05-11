@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+{% block cssStyle%}
+<link rel="stylesheet" href="{% static 'theBlogNew/css/blogHomePage.css' %}" />
+{% endblock cssStyle%}
+<!--  -->
+{% block app%}
+<div class="bloghomePage">
+  <p>this is rendered from blogHomePage.html</p>
+  And this is teh home page of the website not ap specific home page
+</div>
+{% endblock app%}

@@ -1,0 +1,22 @@
+body {
+  background-color: #bdb76b;
+  font-size: 16px;
+}
+
+.articleContent {
+  border-style: dashed;
+  max-width: 60%;
+  margin: auto;
+  font-size: 1.25rem;
+}
+
+.imag {
+  max-width: 60%px;
+  height: 350px;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+/*# sourceMappingURL=article.css.map */
