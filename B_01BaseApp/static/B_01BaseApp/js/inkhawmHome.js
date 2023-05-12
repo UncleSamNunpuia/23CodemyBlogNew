@@ -17,7 +17,7 @@ window.addEventListener('scroll', function() {
     
     if (!isNaN(a) && !isNaN(b)) {
         document.getElementById("mattotal").value = a + b;
-        document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value);
+        // document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value);
     };
   };
 
@@ -28,7 +28,7 @@ window.addEventListener('scroll', function() {
     
     if (!isNaN(c) && !isNaN(d)) {
         document.getElementById("martotal").value = c + d;
-        document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value);
+        // document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value);
     };
 };
 
@@ -39,7 +39,7 @@ function calculateSumLk() {
     
     if (!isNaN(e) && !isNaN(f)) {
         document.getElementById("lukatotal").value = e+f;
-        document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value);
+        // document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value);
     };
 };
 
@@ -50,7 +50,7 @@ function calculateSumJh() {
     
     if (!isNaN(e) && !isNaN(f)) {
         document.getElementById("johanatotal").value = e+f;
-        document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value)+parseInt(document.getElementById("johanatotal").value);
+        // document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value)+parseInt(document.getElementById("johanatotal").value);
     };
 };
 
@@ -65,10 +65,12 @@ function sum() {
 function sumChhimtu() {
     // Leader leh secy.
     alert('chhimtu');
-    var ls = parseInt(document.getElementById("leadrSecy").value);
+    var ls = parseInt(document.getElementById("chhimtu1_no_id").value);
+    alert(ls);
     if (!isNaN(ls)) {
         alert('chhimtu inside nana');
-        document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value)+parseInt(document.getElementById("johanatotal").value)+parseInt(document.getElementById("leadrSecy").value);
+        alert(`Total so far is: ${document.getElementById("gtotal").value}`);
+    //     document.getElementById("gtotal").value =  parseInt(document.getElementById("mattotal").value)+parseInt(document.getElementById("martotal").value)+parseInt(document.getElementById("lukatotal").value)+parseInt(document.getElementById("johanatotal").value)+parseInt(document.getElementById("leadrSecy").value)+parseInt(document.getElementById("chhimtu1_no_id").value);
     };
 };
 

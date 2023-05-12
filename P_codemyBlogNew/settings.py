@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.11',
                  '192.168.1.7', '192.168.1.20', '192.168.63.84']
 
+# ALLOWED_HOSTS = ['UncleSam13.pythonanywhere.com']
 
 # Application definition
 
@@ -117,14 +118,24 @@ WSGI_APPLICATION = 'P_codemyBlogNew.wsgi.application'
 #         'PASSWORD': 'P@sswordTh@r4',
 #     }}
 # this below conects AWS db
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'codemyblog_aws',
+#         'HOST': 'django-ktp-002.cyg4yn3zxpxq.ap-south-1.rds.amazonaws.com',
+#         'PORT': 3306,
+#         'USER': 'admin',
+#         'PASSWORD': 'admin1234321',
+#     }}
+# this below conects pythonanywhere  db
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'codemyblog_aws',
-        'HOST': 'django-ktp-002.cyg4yn3zxpxq.ap-south-1.rds.amazonaws.com',
+        'NAME': 'UncleSam13$codemyblog_pythonanywhere',
+        'HOST': 'UncleSam13.mysql.pythonanywhere-services.com',
         'PORT': 3306,
-        'USER': 'admin',
-        'PASSWORD': 'admin1234321',
+        'USER': 'UncleSam13',
+        'PASSWORD': '',
     }}
 
 # Password validation

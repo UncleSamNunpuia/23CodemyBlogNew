@@ -97,10 +97,10 @@
           max="25"
           step="1"
           id="matgrp"
-          oninput="calculateSumMt()"
           name="mat_grp_cmt"
           value="{{ip_matGrpcmt}}"
           placeholder=" "
+          oninput="calculateSumMt()"
         />
         <label for="matgrp">Mat. Grp. Cmt. zat</label>
         {% if error.mat_grp_cmt %}
@@ -120,10 +120,10 @@
           max="300"
           step="1"
           id="matmem"
-          oninput="calculateSumMt()"
           name="mat_members"
           value="{{ip_matMem}}"
           placeholder=" "
+          oninput="calculateSumMt()"
         />
         <label for="matmem">Mat. Grp. Member zat</label>
         {% if error.mat_members %}
@@ -161,10 +161,10 @@
           max="25"
           step="1"
           id="margrp"
-          oninput="calculateSumMk()"
           name="marka_grp_cmt"
           value="{{ip_marGrpcmt}}"
           placeholder=" "
+          oninput="calculateSumMk()"
         />
         <label for="margrp">Marka Grp. Cmt. zat</label>
         {% if error.marka_grp_cmt %}
@@ -183,10 +183,10 @@
           max="300"
           step="1"
           id="marmem"
-          oninput="calculateSumMk()"
           name="marka_members"
           value="{{ip_marMem}}"
           placeholder=" "
+          oninput="calculateSumMk()"
         />
         <label for="marmem">Mar. Grp. Member zat</label>
         {% if error.marka_grp_cmt %}
@@ -224,10 +224,10 @@
           max="25"
           step="1"
           id="lukagrp"
-          oninput="calculateSumLk()"
           name="luka_grp_cmt"
           value="{{ip_lukaGrpcmt}}"
           placeholder=" "
+          oninput="calculateSumLk()"
         />
         <label for="lukagrp">Luka Grp. Cmt. zat</label>
         {% if error.luka_grp_cmt %}
@@ -246,10 +246,10 @@
           max="300"
           step="1"
           id="lukamem"
-          oninput="calculateSumLk()"
           name="luka_members"
           value="{{ip_lukaMem}}"
           placeholder=" "
+          oninput="calculateSumLk()"
         />
         <label for="lukamem">Luka Grp. Member zat</label>
         {% if error.luka_members %}
@@ -286,10 +286,10 @@
           max="25"
           step="1"
           id="johanagrp"
-          oninput="calculateSumJh()"
           name="johan_grp_cmt"
           value="{{ip_johanaGrpcmt}}"
           placeholder=" "
+          oninput="calculateSumJh()"
         />
         <label for="johanagrp">Johana Grp. Cmt. zat</label>
         {% if error.johan_grp_cmt %}
@@ -308,10 +308,10 @@
           max="300"
           step="1"
           id="johanamem"
-          oninput="calculateSumJh()"
           name="johan_members"
           value="{{ip_johanaMem}}"
           placeholder=" "
+          oninput="calculateSumJh()"
         />
         <label for="johanamem">Johana Grp. Member zat</label>
         {% if error.johan_members %}
@@ -379,7 +379,7 @@
         <!-- <div class="mb-3"> -->
         <input
           type="text"
-          class="form-control form-control bg-warning {% if error %}{% if error.chhimtu1 %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
+          class="form-control bg-warning {% if error %}{% if error.chhimtu1 %}error is-invalid{%else%}noerror is-valid{% endif%}{% endif%}"
           id="chhimtu1_id"
           name="chhimtu1"
           placeholder=" "
@@ -407,6 +407,7 @@
           placeholder=" "
           name="chhimtu1_no"
           value="{{ip_chhimtu1_no}}"
+          disabled
         />
         <label for="chhimtu1_no_id">Chhimtu1 zat</label>
         {% if error.chhimtu1 %}
