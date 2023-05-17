@@ -11,7 +11,10 @@ from ckeditor.fields import RichTextField
 class Post(models.Model):
     post_title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    post_content = RichTextField(blank=True, null=True)
+    # post_content = RichTextField(blank=True, null=True')
+    # config_name tih hian settings.py ah CKEDIROT bik kan customise na name a kawk
+    post_content = RichTextField(
+        blank=True, null=True, config_name='sam_custom')
     created_at = models.DateTimeField(auto_now_add=True)
     # created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)

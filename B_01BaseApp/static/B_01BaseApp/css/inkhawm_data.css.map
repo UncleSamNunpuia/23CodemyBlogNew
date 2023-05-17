@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,CAAC,CAAA;EAEG,UAAU,EAAE,UAAU;CACzB",
+    "mappings": "AAAA,AAAA,CAAC,CAAA;EAEG,UAAU,EAAE,UAAU;CACzB;;AAED,AAAA,OAAO,CAAC;EACJ,SAAS,EAAE,IAAI;EACf,OAAO,EAAE,GAAG;CACf;;AAED,AAAA,QAAQ,CAAC;EAEL,OAAO,EAAE,IAAI;CAChB",
     "sources": [
         "inkhawm_data.scss"
     ],

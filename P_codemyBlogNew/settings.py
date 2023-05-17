@@ -118,25 +118,25 @@ WSGI_APPLICATION = 'P_codemyBlogNew.wsgi.application'
 #         'PASSWORD': 'P@sswordTh@r4',
 #     }}
 # this below conects AWS db
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'codemyblog_aws',
-#         'HOST': 'django-ktp-002.cyg4yn3zxpxq.ap-south-1.rds.amazonaws.com',
-#         'PORT': 3306,
-#         'USER': 'admin',
-#         'PASSWORD': 'admin1234321',
-#     }}
-# this below conects pythonanywhere  db
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'UncleSam13$codemyblog_pythonanywhere',
-        'HOST': 'UncleSam13.mysql.pythonanywhere-services.com',
+        'NAME': 'codemyblog_aws',
+        'HOST': 'django-ktp-002.cyg4yn3zxpxq.ap-south-1.rds.amazonaws.com',
         'PORT': 3306,
-        'USER': 'UncleSam13',
-        'PASSWORD': '',
+        'USER': 'admin',
+        'PASSWORD': 'admin1234321',
     }}
+# this below conects pythonanywhere  db
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'UncleSam13$codemyblog_pythonanywhere',
+#         'HOST': 'UncleSam13.mysql.pythonanywhere-services.com',
+#         'PORT': 3306,
+#         'USER': 'UncleSam13',
+#         'PASSWORD': '',
+#     }}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -179,7 +179,33 @@ STATIC_URL = 'static/'
 # added
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 # added to try ckeditor, chuan staticfiles dir made where manage.py is
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# added to trya dn customise ckeditor
+# CKEDITOR_BASEPATH = "P_codemyBlogNew/static/js/"
+# added below are different config profiles and names of ckeditr that can be used
+# which custom name to use is assigned in the models.py
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'toolbar': 'full',
+        'height': 300,
+        'width': 500,
+    },
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+        'width': 200,
+    },
+    'sam_custom': {
+        'toolbar': 'Custom',
+        'width': 400,
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}
 # added below to enable upload and ftech of images
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

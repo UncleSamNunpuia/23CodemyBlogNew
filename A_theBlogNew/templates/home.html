@@ -6,10 +6,15 @@
 <!--  -->
 {% block cssStyle%}
 <!-- it gos to App/static/'appname/css/fileName' -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="{% static 'theBlogNew/css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'theBlogNew/css/blogCard.css' %}" />
 {% endblock cssStyle%}
 <!--  -->
 {% block app %}
+<!--  -->
+{% include 'A_theBlogNew\helperHtml\blogCard.html'%}
+
 <div class="container">
   {{ page_title }}
   <br />
@@ -28,23 +33,13 @@
               alt="..."
             />
             {% endif %}
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            <h5 class="card-title">
-              <!-- <a href="{% url 'blog_article' postQuerySet.pk %}"> -->
-              {{ postQuerySet.post_title }}
-              <!-- </a> -->
-            </h5>
+            <h5 class="card-title">{{ postQuerySet.post_title }}</h5>
             <h6>
               Written By: {{ postQuerySet.author.first_name }} aka
-              <!--  -->
               {{postQuerySet.author.username }}
             </h6>
             <p>{{postQuerySet.updated_at}}</p>
-            <small>
-              <!-- <a href="{% url 'blog_updatePost' postQuerySet.pk %}"> -->
-              Edit
-              <!-- </a> -->
-            </small>
+            <small> Edit </small>
             <p class="card-text">{{ postQuerySet.post_content | safe }}</p>
           </div>
         </a>
@@ -57,3 +52,8 @@
 <!--  -->
 
 {% endblock app %}
+<!--  -->
+{% block additionalJs%}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'theBlogNew/js/blogCard.js' %}"></script>
+{% endblock additionalJs%}

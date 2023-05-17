@@ -1,6 +1,9 @@
-body {
+* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: rgba(50, 150, 103, 0.589);
+}
+
+body {
+  background-color: #83c5be;
 }
 /*# sourceMappingURL=base.css.map */

@@ -1,22 +1,51 @@
 body {
-  background-color: #bdb76b;
+  background-color: #83c5be;
   font-size: 16px;
 }
 
 .articleContent {
-  border-style: dashed;
-  max-width: 60%;
+  border-style: outset;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 10px 10px 31px 0px #141414bf;
+          box-shadow: 10px 10px 31px 0px #141414bf;
+  max-width: 95%;
+  padding: 5px;
   margin: auto;
   font-size: 1.25rem;
 }
 
 .imag {
-  max-width: 60%px;
+  border-radius: 10px;
   height: 350px;
   margin: auto;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+.f1 {
+  max-width: 100px;
+}
+
+.bdrcolor {
+  border-color: #3d405b;
+}
+
+.links {
+  text-decoration: none;
+  color: #f14e64;
+}
+
+.links :visited {
+  color: green;
+}
+
+.links :hover {
+  color: #4a70ec;
+}
+
+.links :active {
+  color: #ff0a0a;
 }
 /*# sourceMappingURL=article.css.map */

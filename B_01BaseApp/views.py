@@ -80,14 +80,14 @@ def inkhawmHome(request):
 #         return context
 
 
-def inkhawm_data(request):
+def inkhawm_dataAPI(request):
     # fn based views
     # list
-    endpoint = "http://127.0.0.1:8060/api/list/"
+    # endpoint = "http://127.0.0.1:8060/api/list/"
+    endpoint = "https://unclesam13.pythonanywhere.com/api/list"
 
     headers = {'Content-type': 'application/json',
                'Accept': 'application/json'}
-    # data = {"title": "create Prod.", "price": 56.5}
     get_response = requests.get(endpoint, headers)
     # print("response in text is : ", get_response.text)
     data = json.loads(get_response.text)
@@ -100,3 +100,9 @@ def inkhawm_data(request):
     # return render(request, 'inkhawm_data.html', {'endpoint': endpoint, 'json_data': data, 'json_js': get_response.text, "funny": "ehehehhe__"})
     # return render(request, 'inkhawm_data.html', {'json_data': data, "funny": "ehehehhe__"})
     return render(request, 'inkhawm_data.html', context)
+
+
+def inkhawm_data(request):
+
+    context = {'page_title': "Inkhawm Charts (normal)"}
+    return render(request, 'inkhawm_charts.html', context)

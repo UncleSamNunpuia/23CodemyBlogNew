@@ -25,4 +25,5 @@ app_name = 'inkhawm'
 urlpatterns = [
     path('', views.inkhawmHome, name='inkhawmHome'),
     path('charts/', views.inkhawm_data, name='inkhawm_dataView'),
+    path('data/', views.inkhawm_dataAPI, name='inkhawm_dataViewAPI'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

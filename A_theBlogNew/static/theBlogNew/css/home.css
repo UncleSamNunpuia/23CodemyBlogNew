@@ -3,19 +3,19 @@ a {
   color: black;
 }
 
+ul {
+  padding-left: 3px;
+}
+
 .tichhin {
   background-color: rgba(35, 194, 133, 0.678);
   height: 400px;
-  width: 25rem;
+  width: 100%;
   overflow-y: hidden;
   padding: 10px;
-  -webkit-transition: -webkit-box-shadow .5s, -webkit-transform 0.6s;
-  transition: -webkit-box-shadow .5s, -webkit-transform 0.6s;
-  transition: box-shadow .5s, transform 0.6s;
-  transition: box-shadow .5s, transform 0.6s, -webkit-box-shadow .5s, -webkit-transform 0.6s;
   margin: auto;
-  border-radius: 10px;
-  border: 1px solid #516ada;
+  border-radius: 20px;
+  border: 1px solid #9ae424;
   -webkit-animation: fadeInUp 1.5s ease-out;
           animation: fadeInUp 1.5s ease-out;
 }
@@ -23,8 +23,8 @@ a {
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, 50px, 0);
-            transform: translate3d(0, 50px, 0);
+    -webkit-transform: translate3d(-100px, 0, 0);
+            transform: translate3d(-100px, 0, 0);
   }
   to {
     opacity: 1;
@@ -36,8 +36,8 @@ a {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, 50px, 0);
-            transform: translate3d(0, 50px, 0);
+    -webkit-transform: translate3d(-100px, 0, 0);
+            transform: translate3d(-100px, 0, 0);
   }
   to {
     opacity: 1;

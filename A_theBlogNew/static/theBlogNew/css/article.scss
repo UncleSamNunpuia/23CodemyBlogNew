@@ -1,20 +1,45 @@
 body {
-    background-color: #bdb76b;
+    background-color: #83c5be;
     font-size: 16px;
 }
 
 .articleContent {
-    border-style: dashed;
-    // width: 844px;
-    max-width: 60%;
+    border-style: outset;
+    background-color: whitesmoke;
+    box-shadow: 10px 10px 31px 0px #141414bf;
+    max-width: 95%;
+    padding: 5px;
     margin: auto;
     font-size: 1.25rem;
 }
 
 .imag {
-    max-width: 60%px;
+    // max-width: 60%;
+    border-radius: 10px;
     height: 350px;
     margin: auto;
     object-fit: cover;
     object-position: center;
+}
+
+.f1 {
+    max-width: 100px;
+}
+
+.bdrcolor{
+    border-color: #3d405b;
+}
+
+.links{
+    text-decoration: none;
+    color: #f14e64;
+    :visited {
+        color: green;
+      }
+    :hover{
+        color: rgb(74, 112, 236);
+    }
+    :active {
+        color: rgb(255, 10, 10);
+      }
 }

@@ -1,0 +1,130 @@
+{% extends 'base.html'%}
+<!--  -->
+{% load static %}
+<!--  -->
+{% block title%} {{page_title}}{% endblock title%}
+<!--  -->
+<!--  -->
+{% block cssStyle%}
+<link
+  rel="stylesheet"
+  href="{% static 'B_01BaseApp/css/inkhawm_charts.css'%}"
+/>
+
+{% endblock cssStyle%}
+<!--  -->
+<!--  -->
+{% block app%}
+<div
+  class="container shadow-lg border border-4 border-warning rounded-end bg-warning-subtle"
+>
+  This part rendered from inkhawm charts (normal db query)
+  <br />
+</div>
+<div class="container">
+  <p class="h2">
+    Page title is :
+    <span class="h4 font-italic"> {{page_title}} </span>
+  </p>
+</div>
+<hr />
+
+<!-- table1 -->
+<div class="container-fluid table-cs">
+  Inkhawm zat data 1
+  <table
+    class="table table-hover table-bordered border-primary bg-success-subtle tb-font"
+  >
+    <th>
+      <tr>
+        <td rowspan="2">SL. No</td>
+        <td rowspan="2">Date</td>
+        <td colspan="2">Matthaia</td>
+        <td colspan="2">Marka</td>
+        <td colspan="2">Luka</td>
+        <td colspan="2">Johana</td>
+        <td rowspan="2">Leader leh Secy</td>
+        <td rowspan="2">Chhimtu/ Mikhual Zat</td>
+        <td rowspan="2">Inkhawm Zat</td>
+      </tr>
+      <tr>
+        <td>Group Cmt.</td>
+        <td>Member</td>
+        <td>Group Cmt.</td>
+        <td>Member</td>
+        <td>Group Cmt.</td>
+        <td>Member</td>
+        <td>Group Cmt.</td>
+        <td>Member</td>
+      </tr>
+    </th>
+    <tr>
+      <td>sN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+<!--  -->
+{% endblock app%}
+<!--  -->
+<!--  -->
+{% block additionalJs%}
+<!-- for gchart -->
+
+<script
+  type="text/javascript"
+  src="https://www.gstatic.com/charts/loader.js"
+></script>
+<script>
+  // console.log({{json_data|safe}});
+  console.log("jsond data .text is :");
+  var json_data_js = JSON.parse("{{ json_js|escapejs }}");
+  // var json_data_js = {{json_js|safe}};
+</script>
+<!-- for chart js -->
+<!-- the order matters notice -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+  integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"
+  integrity="sha512-wUYbRPLV5zs6IqvWd88HIqZU/b8TBx+I8LEioQ/UC0t5EMCLApqhIAnUg7EsAzdbhhdgW07TqYDdH3QEXRcPOQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script> -->
+<!-- <script src="path/to/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script> -->
+<script src="{% static 'B_01BaseApp/js/inkhawm_charts.js'%}"></script>
+<!-- chart js ends -->
+{% endblock additionalJs%}
+<!--  -->

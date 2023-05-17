@@ -11,18 +11,24 @@
 {% block app%}
 <!--  -->
 <div class="articleContent">
+  {% if post.image %}
+  <img src="{{ post.image.url }}" class="card-img-top imag" alt="..." />
+  {% endif %}
   <h1>
     {{ post.post_title}} |
-    <a href="{% url 'blog_updatePost' post.pk %}"> Edit! </a>
+    <a href="{% url 'blog_updatePost' post.pk %}" class="links">
+      <span class="h3"> Edit! </span>
+    </a>
   </h1>
   <small>Created on: {{ post.created_at}} </small>
   <small>Updated on: {{ post.updated_at}} </small>
 
-  {% if post.image %}
-  <img src="{{ post.image.url }}" class="card-img-top imag" alt="..." />
-  {% endif %} {{ post.post_content | safe}}
+  <!--  -->
+  {{ post.post_content | safe}}
   <!-- HTML !-->
   <br />
-  <a href="{% url 'blog_homePage' %}">BackToBlog</a>
+  <a href="{% url 'blog_homePage' %}" class="links">
+    <span class="h4"> BackToBlog </span>
+  </a>
 </div>
 {% endblock app%}

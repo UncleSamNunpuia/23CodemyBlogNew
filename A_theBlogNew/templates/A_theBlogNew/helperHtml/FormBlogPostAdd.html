@@ -1,0 +1,49 @@
+<div class="container bg-info rounded shadow-lg border border-3 bdrcolor">
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.media }}
+    <br />
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-3">
+        <label for="{{form.post_title.id_for_label}}" class="form-label">
+          <b> Thupui </b>
+        </label>
+      </div>
+      <div class="col-4">{{ form.post_title }}</div>
+      <!-- </div> -->
+    </div>
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-3">
+        <label for="{{ form.author.id_for_label }}" class="form-label">
+          <b> Thu Ziak post tu </b>
+        </label>
+      </div>
+      <div class="col-4">{{ form.author }}</div>
+      <!-- </div> -->
+    </div>
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-3">
+        <label for="{{ form.post_content.id_for_label }}" class="form-label">
+          <b> Thuziak </b>
+        </label>
+      </div>
+      <br />
+      <div class="col-4">{{ form.post_content }}</div>
+    </div>
+    <div class="row g-3 mt-2 align-items-center">
+      <div class="col-3">
+        <label for="{{ form.image.id_for_label }}" class="form-label">
+          <b> Thuziak Card a thlalak </b>
+        </label>
+      </div>
+      <div class="col-4">
+        <!-- <br /> -->
+        {{ form.image }}
+        <!-- </div> -->
+      </div>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-primary">Submit Post!</button>
+    <br />
+    <br />
+  </form>
+</div>
